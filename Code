@@ -6,6 +6,8 @@
 
 # Per game data can be viewed [here](https://www.nba.com/stats/players/defense?SeasonType=Regular+Season); season total data can be viewed [here](https://www.nba.com/stats/players/defense?SeasonType=Regular+Season&PerMode=Totals).
 
+# Make sure to download and add the Excel file from [here](https://github.com/aidandreyes/NBA-Defensive-Analysis/blob/main/nba_defense.xlsx) into the local file directory before starting.
+
 # Load libraries
   library (jsonlite)
   library(rvest)
