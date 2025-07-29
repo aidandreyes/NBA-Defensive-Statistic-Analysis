@@ -1,3 +1,18 @@
 # **NBA Defensive Statistic Analysis (2024-25 Season)**
 
 ### **AIDAN REYES**
+# ---
+# This project uses preexisting data from the 2024-2025 NBA season via the NBA.com website.
+
+# Per game data can be viewed [here](https://www.nba.com/stats/players/defense?SeasonType=Regular+Season); season total data can be viewed [here](https://www.nba.com/stats/players/defense?SeasonType=Regular+Season&PerMode=Totals).
+
+# Load libraries
+  library (jsonlite)
+  library(rvest)
+  library(ggplot2)
+  library(readxl)
+
+# Install packages
+  install.packages("dslabs")
+  install.packages("readxl")   
+  install.packages("writexl")
