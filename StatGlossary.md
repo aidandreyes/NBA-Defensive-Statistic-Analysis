@@ -45,3 +45,9 @@ OPP_PAINT_PPG: Opponent paint points per game average.
 DEF_WS_TOTAL: Total defensive win shares this season; estimates how many wins a player contributes to their team solely through defensive contributions. 
 
 DEF_WS_PER_GAME: Defensive win shares per game average.
+
+DFGM: Defended field goals made; field goals made by opponent while contested by player.
+
+DFGA: Defended field goal attempts; field goals attempted by opponent while contested by player.
+
+DFG_PCT: Defended field goal percentage.
