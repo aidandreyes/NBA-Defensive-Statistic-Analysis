@@ -29,3 +29,12 @@
 
 # Clean data frame to only include players that played at least 500 minutes
   defensive_df <- defensive_df[defensive_df$MIN_TOTAL >= 500, ]
+
+# Convert categorical variables PLAYER, TEAM, POSITION into factors
+  defensive_df$PLAYER <- as.factor (defensive_df$PLAYER)
+  defensive_df$POSITION <- as.factor(defensive_df$POSITION)
+  defensive_df$TEAM <- as.factor (defensive_df$TEAM)
+
+# Fix position levels since C-F is same as F-C and F-G is same as G-F
+  levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="C-F"] <- "F-C"
+  levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="F-G"] <- "G-F"
