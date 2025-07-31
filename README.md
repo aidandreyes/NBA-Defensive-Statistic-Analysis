@@ -2,7 +2,7 @@
 
 Start date: 7/28/2025
 
-This project aims to analyze individual player defensive stats from the 2024-25 NBA season to project the best defensive players in the league this season. 
+This project aims to use R to analyze individual player defensive stats from the 2024-25 NBA season to project the best defensive players in the league this season. 
 
 This project uses preexisting data from the 2024-2025 NBA season via the NBA.com website.
 
