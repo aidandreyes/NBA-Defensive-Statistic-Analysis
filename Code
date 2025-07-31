@@ -27,6 +27,13 @@
 # Create csv file
   write.csv(x = defense_excel, file = "nba_defense.csv", row.names = TRUE)
 
+# Create data frame from the csv file
+  defensive_df <- as.data.frame(read.csv("nba_defense.csv"))
+# Remove original player ID column
+  defensive_df <- defensive_df[, -which(names(defensive_df) == "X")]
+# Omit any players with missing / invalid values
+  na.omit(defensive_df)
+
 # Clean data frame to only include players that played at least 500 minutes
   defensive_df <- defensive_df[defensive_df$MIN_TOTAL >= 500, ]
 
