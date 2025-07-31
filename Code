@@ -45,3 +45,13 @@
 # Fix position levels since C-F is same as F-C and F-G is same as G-F
   levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="C-F"] <- "F-C"
   levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="F-G"] <- "G-F"
+
+# I wanted to find the players with the best and worst defensive ratings and compare them to league average.
+lowest_drtg <- min(defensive_df$DEF_RTG, na.rm = TRUE)
+print(paste("BEST DEFENSIVE RATING: ", lowest_drtg, "-" ,defensive_df[defensive_df$DEF_RTG == lowest_drtg, "PLAYER"]))
+
+highest_drtg <- max(defensive_df$DEF_RTG, na.rm = TRUE)
+print(paste("WORST DEFENSIVE RATING: ", highest_drtg, "-" ,defensive_df[defensive_df$DEF_RTG == highest_drtg, "PLAYER"]))
+
+average_drtg <- mean(defensive_df$DEF_RTG, na.rm = TRUE)
+print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
