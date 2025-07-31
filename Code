@@ -57,3 +57,14 @@ print(paste("WORST DEFENSIVE RATING: ", highest_drtg, "-" ,defensive_df[defensiv
 
 average_drtg <- mean(defensive_df$DEF_RTG, na.rm = TRUE)
 print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
+
+# Acquire the average defensive rating for each team by grouping players by what teams they play for. 
+# This will give a better idea of how team defensive stats will affect a player's individual defensive stats. 
+# There is a good chance there will be players with good individual stats but play on teams with bad defensive stats.
+
+# Group by team 
+  mean_drtg_by_team <- defensive_df %>%
+    group_by(TEAM)%>%
+    summarise(Mean_DEF_RTG = mean(DEF_RTG, na.rm = TRUE))
+  
+  print(mean_drtg_by_team)
