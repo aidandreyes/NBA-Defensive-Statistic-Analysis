@@ -9,16 +9,18 @@
 
 # Make sure to download and add the Excel file from [here](https://github.com/aidandreyes/NBA-Defensive-Analysis/blob/main/nba_defense.xlsx) into the local file directory before starting.
 
-# Load libraries
-  library (jsonlite)
-  library(rvest)
-  library(ggplot2)
-  library(readxl)
-
 # Install packages
   install.packages("dslabs")
   install.packages("readxl")   
-  install.packages("writexl")
+  install.packages("writexl") 
+  install.packages("dplyr")
+
+# Load libraries
+  library(jsonlite)
+  library(rvest)
+  library(ggplot2)
+  library(readxl)
+  library(dplyr)
 
 # I previously exported data from the website manually to create my own Excel sheet
 # Export excel sheet
