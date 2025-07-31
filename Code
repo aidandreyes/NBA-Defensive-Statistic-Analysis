@@ -19,3 +19,10 @@
   install.packages("dslabs")
   install.packages("readxl")   
   install.packages("writexl")
+
+# I previously exported data from the website manually to create my own Excel sheet
+# Export excel sheet
+  defense_excel <- read_excel("nba_defense.xlsx")
+
+# Create csv file
+  write.csv(x = defense_excel, file = "nba_defense.csv", row.names = TRUE)
