@@ -63,8 +63,22 @@ print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
 # There is a good chance there will be players with good individual stats but play on teams with bad defensive stats.
 
 # Group by team 
-  mean_drtg_by_team <- defensive_df %>%
-    group_by(TEAM)%>%
-    summarise(Mean_DEF_RTG = mean(DEF_RTG, na.rm = TRUE))
+  avg_drtg_by_team <- defensive_df %>%
+  group_by(TEAM)%>%
+  summarise(Mean_DEF_RTG = mean(DEF_RTG, na.rm = TRUE, 1))
+
+# Create data frame for team defensive rating
+  avg_drtg_by_team <- as.data.frame(avg_drtg_by_team)
+  names(avg_drtg_by_team) <- c("TEAM", "DEF_RTG")
+  
+  # Defensive Rating in order from best to worst
+  avg_drtg_by_team[order(avg_drtg_by_team$DEF_RTG),]
+  
+  # Worst Defensive Rating
+  avg_drtg_by_team[avg_drtg_by_team$DEF_RTG == max(avg_drtg_by_team$DEF_RTG), ]
+  
+  # Best Defensive Rating
+  avg_drtg_by_team[avg_drtg_by_team$DEF_RTG == min(avg_drtg_by_team$DEF_RTG), ]
+ 
   
 
