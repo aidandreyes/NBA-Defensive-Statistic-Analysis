@@ -67,4 +67,4 @@ print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
     group_by(TEAM)%>%
     summarise(Mean_DEF_RTG = mean(DEF_RTG, na.rm = TRUE))
   
-  print(mean_drtg_by_team)
+
