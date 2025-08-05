@@ -80,5 +80,14 @@ print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
   # Best Defensive Rating
   avg_drtg_by_team[avg_drtg_by_team$DEF_RTG == min(avg_drtg_by_team$DEF_RTG), ]
  
-  
+# Use the original dataframe and plot the data onto a boxplot to visualize the best and worst teams by defensive rating. 
+# This will allow for visual access to outlying players and what the league average is.
 
+  ggplot(defensive_df, aes(x = TEAM, y = DEF_RTG, color = TEAM)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.05, alpha = 0.5) +
+    geom_hline(yintercept = mean(defensive_df$DEF_RTG), color = "blue", linetype = "dashed") + # league average
+    geom_text(aes(x = 0, y = mean(DEF_RTG),label = "League Average"), color = "blue", hjust = 0, vjust = -0.5) +
+    labs(title = "Defensive Rating by Team",
+          x = "Team",
+          y = "Defensive Rating")
