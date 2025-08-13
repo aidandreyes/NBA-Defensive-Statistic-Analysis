@@ -10,6 +10,6 @@ Per game data can be viewed at https://www.nba.com/stats/players/defense?SeasonT
 Season total data can be viewed at https://www.nba.com/stats/players/defense?SeasonType=Regular+Season&PerMode=Totals. 
 Defensive field goals allowed stats were taken from https://www.nba.com/stats/players/defense-dash-overall?PerMode=Totals&SeasonType=Regular+Season&Season=2024-25.
 
-Make sure to download and add the Excel file from here into the local file directory before starting.
+Make sure to download and add the Excel file from here into the local file directory before starting. A glossary for all the abbreviated basketball statistic terms used can be found at https://github.com/aidandreyes/NBA-Defensive-Statistic-Analysis/blob/main/StatGlossary.md.
 
-A glossary for all the abbreviated basketball statistic terms used can be found at https://github.com/aidandreyes/NBA-Defensive-Statistic-Analysis/blob/main/StatGlossary.md.
+This analysis aims to analyze which advanced defense statistic categories are best indicative of predicting a player's defensive rating and win shares.
