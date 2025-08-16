@@ -1,4 +1,4 @@
-# NBA Defensive Statistic Analysis (project is still in progress)
+# NBA Defensive Statistic Analysis (in progress)
 
 Start date: 7/28/2025
 
