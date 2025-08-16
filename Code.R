@@ -14,6 +14,7 @@
   install.packages("readxl")   
   install.packages("writexl") 
   install.packages("dplyr")
+  install.packages("ggplot2")
 
 # Load libraries
   library(jsonlite)
@@ -48,6 +49,28 @@
   levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="C-F"] <- "F-C"
   levels(defensive_df$POSITION)[levels(defensive_df$POSITION)=="F-G"] <- "G-F"
 
+# Use the original dataframe and plot the data onto a boxplot to visualize the best and worst teams by defensive rating and defensive win shares. This will allow for visual access to outlying players and what the league average is.
+
+# Boxplot: Defensive Rating by Team
+ggplot(defensive_df, aes(x = TEAM, y = DEF_RTG), options(repr.plot.width = 10, repr.plot.height = 8)) +
+  geom_boxplot(color = "red") +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  geom_hline(yintercept = mean(defensive_df$DEF_RTG), color = "blue", linetype = "dashed") + # league average
+  geom_text(aes(x = 0, y = mean(DEF_RTG),label = "League Average"), color = "blue", hjust = 0, vjust = -0.5) +
+  labs(title = "Defensive Rating by Team",
+        x = "Team",
+        y = "Defensive Rating")
+
+# Boxplot: Defensive Win Shares by Team
+ggplot(defensive_df, aes(x = TEAM, y = DEF_WS_TOTAL), options(repr.plot.width = 10, repr.plot.height = 8)) +
+  geom_boxplot(color = "red") +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  geom_hline(yintercept = mean(defensive_df$DEF_WS_TOTAL), color = "blue", linetype = "dashed") + # league average
+  geom_text(aes(x = 0, y = mean(DEF_WS_TOTAL),label = "League Average"), color = "blue", hjust = 0, vjust = -0.5) +
+  labs(title = "Defensive Win Shares by Team",
+        x = "Team",
+        y = "Defensive Win Shares")
+
 # I wanted to find the players with the best and worst defensive ratings and compare them to league average.
 lowest_drtg <- min(defensive_df$DEF_RTG, na.rm = TRUE)
 print(paste("BEST DEFENSIVE RATING: ", lowest_drtg, "-" ,defensive_df[defensive_df$DEF_RTG == lowest_drtg, "PLAYER"]))
@@ -62,32 +85,29 @@ print(paste("AVERAGE DEFENSIVE RATING: ", average_drtg))
 # This will give a better idea of how team defensive stats will affect a player's individual defensive stats. 
 # There is a good chance there will be players with good individual stats but play on teams with bad defensive stats.
 
-# Group by team 
-  avg_drtg_by_team <- defensive_df %>%
+# Defensive Rating
+# Group by team
+avg_drtg_by_team <- defensive_df %>%
   group_by(TEAM)%>%
   summarise(Mean_DEF_RTG = mean(DEF_RTG, na.rm = TRUE, 1))
 
 # Create data frame for team defensive rating
-  avg_drtg_by_team <- as.data.frame(avg_drtg_by_team)
-  names(avg_drtg_by_team) <- c("TEAM", "DEF_RTG")
-  
-  # Defensive Rating in order from best to worst
-  avg_drtg_by_team[order(avg_drtg_by_team$DEF_RTG),]
-  
-  # Worst Defensive Rating
-  avg_drtg_by_team[avg_drtg_by_team$DEF_RTG == max(avg_drtg_by_team$DEF_RTG), ]
-  
-  # Best Defensive Rating
-  avg_drtg_by_team[avg_drtg_by_team$DEF_RTG == min(avg_drtg_by_team$DEF_RTG), ]
- 
-# Use the original dataframe and plot the data onto a boxplot to visualize the best and worst teams by defensive rating. 
-# This will allow for visual access to outlying players and what the league average is.
+avg_drtg_by_team <- as.data.frame(avg_drtg_by_team)
+names(avg_drtg_by_team) <- c("TEAM", "DEF_RTG")
 
-  ggplot(defensive_df, aes(x = TEAM, y = DEF_RTG, color = TEAM)) +
-    geom_boxplot() +
-    geom_jitter(width = 0.05, alpha = 0.5) +
-    geom_hline(yintercept = mean(defensive_df$DEF_RTG), color = "blue", linetype = "dashed") + # league average
-    geom_text(aes(x = 0, y = mean(DEF_RTG),label = "League Average"), color = "blue", hjust = 0, vjust = -0.5) +
-    labs(title = "Defensive Rating by Team",
-          x = "Team",
-          y = "Defensive Rating")
+# Defensive Rating in order from best to worst
+avg_drtg_by_team[order(avg_drtg_by_team$DEF_RTG),]
+
+# Win Shares
+# Group by team
+avg_dws_by_team <- defensive_df %>%
+  group_by(TEAM)%>%
+  summarise(Mean_DEF_WS_TOTAL = mean(DEF_WS_TOTAL, na.rm = TRUE, 1))
+
+# Create data frame for team defensive win shares
+avg_dws_by_team <- as.data.frame(avg_dws_by_team)
+names(avg_dws_by_team) <- c("TEAM", "DEF_WS_TOTAL")
+
+# Defensive Win Shares in order from best to worst
+avg_dws_by_team[order(avg_dws_by_team$DEF_WS_TOTAL, decreasing = TRUE), ]
+ 
