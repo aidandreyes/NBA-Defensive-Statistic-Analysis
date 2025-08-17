@@ -111,3 +111,21 @@ names(avg_dws_by_team) <- c("TEAM", "DEF_WS_TOTAL")
 # Defensive Win Shares in order from best to worst
 avg_dws_by_team[order(avg_dws_by_team$DEF_WS_TOTAL, decreasing = TRUE), ]
  
+# First Example - Scatterplot: Is there a relationship between steals and defensive rating?
+mean(defensive_df$DEF_RTG) # 112.21
+mean(defensive_df$STL_TOTAL) # 50.27
+
+ggplot(defensive_df, aes(x = STL_TOTAL, y = DEF_RTG)) +
+  geom_point() +
+  geom_hline(yintercept = mean(defensive_df$DEF_RTG), color = "blue", linetype = "dashed") + # league average defensive rating
+  geom_text(aes(x = 0, y = mean(DEF_RTG),label = "League Average DRTG: 112.21"), color = "blue", hjust = -7.75, vjust = -0.5) +
+  geom_vline(xintercept = mean(defensive_df$STL_TOTAL), color = "blue", linetype = "dashed") + # league average steals total
+  geom_text(aes(x = mean(STL_TOTAL), y = 125, label = "League Average Total Steals: 50.27"), color = "blue", hjust = 1, vjust = -0.5) +
+  geom_smooth(method = "lm", se = TRUE) + # Add line of best fit
+  labs(title = "Relationship between Steals and Defensive Rating",
+       x = "Total Steals",
+       y = "Defensive Rating")
+
+# As seen, there is little to no linear relationship between a player's steals and defensive rating, as there are players with low steal counts that still have a better defensive rating than those some with high steal counts. 
+# Most notably, there is a prominent outlier at the end of the graph of this season's leader in steals, Dyson Daniels. Daniels accumulated over 200 steals this season, yet has a defensive rating that is slightly worse than the league average.
+
