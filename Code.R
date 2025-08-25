@@ -9,14 +9,8 @@
 
 # Make sure to download and add the Excel file from [here](https://github.com/aidandreyes/NBA-Defensive-Analysis/blob/main/nba_defense.xlsx) into the local file directory before starting.
 
-# Install packages
-  install.packages("dslabs")
-  install.packages("readxl")   
-  install.packages("writexl") 
-  install.packages("dplyr")
-  install.packages("ggplot2")
-
 # Load libraries
+  library(tidyverse)
   library(jsonlite)
   library(rvest)
   library(ggplot2)
