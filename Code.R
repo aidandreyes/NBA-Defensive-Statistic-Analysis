@@ -11,11 +11,7 @@
 
 # Load libraries
   library(tidyverse)
-  library(jsonlite)
-  library(rvest)
-  library(ggplot2)
   library(readxl)
-  library(dplyr)
 
 # I previously exported data from the website manually to create my own Excel sheet
 # Export excel sheet
