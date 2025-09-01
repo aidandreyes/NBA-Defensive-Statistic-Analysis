@@ -12,6 +12,8 @@
 # Load libraries
   library(tidyverse)
   library(readxl)
+  library(viridis)
+  library(ggplot2)
 
 # I previously exported data from the website manually to create my own Excel sheet
 # Export excel sheet
